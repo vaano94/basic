@@ -5,7 +5,19 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+      'log',
+      function() { return Yii::$app->getModule("user"); }
+    ],
+    'modules' => [
+      'user' => [
+          'class' => 'dektrium\user\Module',
+          'confirmWithin' => 21600,
+          'cost' => 12,
+          'admins' => ['admin'],
+          'enableConfirmation' => false
+      ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -14,12 +26,11 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'user' => [
+            'identityClass' => 'dektrium\user\models\User',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -38,7 +49,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        
+
         // 'urlManager' => [
         //     'enablePrettyUrl' => true,
         //     'showScriptName' => false,
@@ -49,13 +60,9 @@ $config = [
         'showScriptName' => false,
         // Disable r= routes
         'enablePrettyUrl' => true,
-        'rules' => array(
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-        ),
+
         ],
-        
+
     ],
     'params' => $params,
 ];
