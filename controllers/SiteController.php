@@ -74,6 +74,22 @@ class SiteController extends Controller
     // echo 'Имя пользователя с id: '.$id.' - '.$pacan->name;
 
 
+
+    public function actionHandleform(){
+        //print_r($data);
+        if (Yii::$app->request->isPost){
+
+          $username = 'user';
+          if (Yii::$app->request->post('checkbox') == 'teacher'){
+            $username = 'admin';
+          }
+
+
+        }else{
+          return $this->redirect('/site/userlogin');
+        }
+    }
+
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -81,12 +97,34 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+
+
+        if (isset(Yii::$app->request->post()['teacher'])){
+          $_POST['LoginForm']['username']='admin';
+          $model->username='admin';
+          $model->password=isset($_POST['LoginForm']['password']) ? $_POST['LoginForm']['password'] : false;
         }
+        if (isset(Yii::$app->request->post()['pupil'])){
+          $model->username='demo';
+          $model->password=isset($_POST['LoginForm']['password']) ? 'demo' : false;
+        }
+
+        if ($model->login()){
+          return $this->goBack();
+        }else{
+          echo 'boraer';
+        }
+        //
+        // if ($model->load(Yii::$app->request->post()) && $model->login()){
+        //   return $this->goBack();
+        // }
+        // if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        //     return $this->goBack();
+        // }
         return $this->render('login', [
             'model' => $model,
         ]);
+
     }
 
     public function actionLogout()
@@ -134,25 +172,6 @@ class SiteController extends Controller
         return $this->render('userlogin');
     }
 
-
-    public function actionHandleform(){
-        $data = Yii::$app->request->post('password');
-        //print_r($data);
-        if ($data=='test') {
-           print_r($data);
-            // Установить роль пользователя на Админа!!11101010
-            //
-            //
-            //
-            $this->layout='nav';
-            $this->roleInSystem=true;
-            //return $this->redirect('planschedule');
-            //actionPlanschedule();
-        }
-        return $this->redirect('planschedule');
-
-
-    }
 
     public function actionPlanschedule() {
         $this->layout='nav';
@@ -280,5 +299,5 @@ class SiteController extends Controller
         Yii::$app->response->redirect(['site/planschedule','query' => $query, 'model' => '$model']);
         //$this->redirect('planschedule',('query'=>$query, 'model'=>$model));
     }
-    
+
 }

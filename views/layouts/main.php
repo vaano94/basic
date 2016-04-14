@@ -43,7 +43,7 @@ AppAsset::register($this);
     ];
 
     if (Yii::$app->user->isGuest) {
-      array_push($navItems,['label' => 'Sign In', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
+      array_push($navItems,['label' => 'Sign In', 'url' => ['/site/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
     } else {
     array_push($navItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
         'url' => ['/site/logout'],

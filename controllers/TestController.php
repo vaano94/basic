@@ -22,27 +22,6 @@ class TestController extends Controller
     public function behaviors() //rbac - распределение ролей
     {
         return [
-            'access' => [
-              'class' => AccessControl::className(),
-              'ruleConfig' => [
-                    'class' => AccessRule::className(),
-              ],
-              'rules' => [
-                [
-                  'actions' => ['index', 'update', 'delete'],
-                  'allow' => true,
-                  'matchCallback' => function(){
-                    return Yii::$app->user->identity['flags'] == '0';
-                  }
-                ],
-                [
-                  'actions' => ['foruser'],
-                  'allow' => true,
-                  'matchCallback' => function(){
-                    return Yii::$app->user->identity['flags'] == '1';                  }
-                ]
-              ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

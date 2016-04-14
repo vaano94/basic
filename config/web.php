@@ -9,15 +9,15 @@ $config = [
       'log',
       function() { return Yii::$app->getModule("user"); }
     ],
-    'modules' => [
-      'user' => [
-          'class' => 'dektrium\user\Module',
-          'confirmWithin' => 21600,
-          'cost' => 12,
-          'admins' => ['admin'],
-          'enableConfirmation' => false
-      ]
-    ],
+    // 'modules' => [
+    //   'user' => [
+    //       'class' => 'dektrium\user\Module',
+    //       'confirmWithin' => 21600,
+    //       'cost' => 12,
+    //       'admins' => ['admin'],
+    //       'enableConfirmation' => false
+    //   ]
+    // ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -30,7 +30,8 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'user' => [
-            'identityClass' => 'dektrium\user\models\User',
+            // 'identityClass' => 'dektrium\user\models\User',
+            'identityClass' => 'app\models\User'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

@@ -24,7 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?= Html::checkbox('teacher', false, ['label' => 'Учитэл']) ?>
+
+        <?= Html::checkbox('pupil', false, ['label' => 'Ученик']) ?>
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
