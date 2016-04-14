@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Lesson;
 use app\models\Subject;
 use app\models\Task;
+use app\models\UserForm;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -109,10 +110,6 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionPiska()
-    {
-        return $this->render('max');
-    }
 
     public function actionHello() {
         return $this->render('hello.php');
@@ -137,8 +134,15 @@ class SiteController extends Controller
 
     public function actionHandleform(){
         $data = Yii::$app->request->post('password');
-        //print_r($data);
-        if ($data=='test') {
+        $type = Yii::$app->request->post('checkbox');
+        
+        $model = new UserForm();
+        if ($model->validate()) {
+
+        }
+
+        print_r($type);
+        /*if ($data=='test') {
            print_r($data);
             // Установить роль пользователя на Админа!!11101010
             //
@@ -149,7 +153,7 @@ class SiteController extends Controller
             //return $this->redirect('planschedule');
             //actionPlanschedule();
         }
-        return $this->redirect('planschedule');
+        return $this->redirect('planschedule');*/
 
 
     }
@@ -158,12 +162,12 @@ class SiteController extends Controller
         $this->layout='nav';
         $model = new Subject();
         $course = Yii::$app->request->post('Subject');
-        echo($course["subject_term"]);
+        echo($course["subject_year"]);
         echo($course["subject_name"]);
 
         // к бд создается запрос
         $query = Subject::find()->where(['subject_name' => $course["subject_name"]])
-            ->andWhere(['subject_term' => $course["subject_term"]])
+            ->andWhere(['subject_year' => $course["subject_year"]])
             ->orderBy('id');
         // и запихивается в dataprovider
         $dataProvider = new ActiveDataProvider([

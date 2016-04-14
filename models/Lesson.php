@@ -47,8 +47,8 @@ class Lesson extends \yii\db\ActiveRecord
             'date' => 'Дата',
             'materials' => 'Материалы',
             'link' => 'Ссылка',
-            'year' => 'Год',
-            'subject' => 'Предмет',
+            'year' => 'Год обучения',
+            'subject' => 'Дисциплина',
         ];
     }
 }

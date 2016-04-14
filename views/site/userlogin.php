@@ -17,11 +17,11 @@ $this->title='Вход';
 
     <form action="http://localhost/basic/web/site/handleform" class="col s4 offset-s4" method="POST">
         <p class="col s1 offset-s2">
-            <input name="checkbox" type="radio" id="student" />
+            <input name="checkbox" type="radio" id="student" value="student" />
             <label for="student">Ученик</label>
         </p>
         <p class="col s1 offset-s2">
-            <input name="checkbox" type="radio" id="teacher" />
+            <input name="checkbox" type="radio" id="teacher" value="teacher"/>
             <label for="teacher">Учитель</label>
         </p>
         
