@@ -44,11 +44,11 @@ class Lesson extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'date' => 'Date',
-            'materials' => 'Materials',
-            'link' => 'Link',
-            'year' => 'Year',
-            'subject' => 'Subject',
+            'date' => 'Дата',
+            'materials' => 'Материалы',
+            'link' => 'Ссылка',
+            'year' => 'Год',
+            'subject' => 'Предмет',
         ];
     }
 }

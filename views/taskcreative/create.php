@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TaskCreative */
 
 $this->title = 'Создать Творческое Задание';
-$this->params['breadcrumbs'][] = ['label' => 'Task Creatives', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Творческие задания', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-creative-create">

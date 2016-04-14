@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TaskCreative */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Task Creatives', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Творческие задания', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-creative-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы уверены, что хотите удалить эту запись?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,14 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
+            'subject_name:ntext',
+            'year',
             'essaytext:ntext',
             'smallessaytext:ntext',
             'topic:ntext',
             'presentationtext:ntext',
             'projecttext:ntext',
-            'year',
-            'subject_name:ntext',
         ],
     ]) ?>
 

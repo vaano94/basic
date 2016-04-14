@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
@@ -28,25 +29,34 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'date',
                 'format' => 'date',
+
                 'filter' => DatePicker::widget(
                     [
                         'model' => $searchModel,
                         'attribute' => 'date',
                         'options' => [
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'dateFormat' => 'dd-MM-yyyy',
                         ],
                         'clientOptions' => [
-                            'dateFormat' => 'yyyy-MM-dd',
-                            'language' => 'en'
+                            'dateFormat' => 'dd-MM-yyyy',
+                            'language' => 'ru'
                         ]
                     ]
                 )
             ],
             //'date',
+            'subject:ntext',
+            'year:ntext',
             'materials:ntext',
-            'link:ntext',
-            'year',
-             'subject:ntext',
+            [
+                'label' => 'Ссылка',
+                'format' => 'html',
+                'value' => function($data){
+                    return Html::a('Материалы', Url::toRoute($data->link));
+                },
+            ],
+            ['class' => 'yii\grid\ActionColumn'],
 
 
         ],

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TaskCreative */
 
-$this->title = 'Update Task Creative: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Task Creatives', 'url' => ['index']];
+$this->title = 'Изменить творческое задание: ' . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Творческие задания', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="task-creative-update">
 

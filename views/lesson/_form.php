@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -12,18 +13,28 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'materials')->textarea(['rows' => 6]) ?>
+    <div class="form-group">
+        <?= $form->field($model, 'date')->widget(DatePicker::className(),[
+            'model' => $model,
+            'attribute' => 'date',
+            'language' => 'ru',
+            'options'=>['class'=>'well well-sm'],
+            'dateFormat' => 'dd-MM-yyyy',
+        ])
+        ?>
+    </div>
 
-    <?= $form->field($model, 'link')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'materials')->textarea(['rows' => 2]) ?>
+
+    <?= $form->field($model, 'link')->textarea(['rows' => 2]) ?>
 
     <?= $form->field($model, 'year')->textInput() ?>
 
-    <?= $form->field($model, 'subject')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'subject')->textarea(['rows' => 2]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

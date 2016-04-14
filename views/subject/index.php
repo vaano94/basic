@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\SubjectSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Subjects';
+$this->title = 'План';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="subject-index">

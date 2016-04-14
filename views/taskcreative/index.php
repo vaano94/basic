@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'subject_name',
                 'filter'=>array("Русский язык"=>"Русский язык","Литература"=>"Литература"),
             ],
-             'subject_name:ntext',
+            // 'subject_name:ntext',
             [
                 'attribute'=>'year',
                 'filter'=>array("1"=>"1 Год","2"=>"2 Год"),
